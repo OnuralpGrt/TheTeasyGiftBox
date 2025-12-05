@@ -227,5 +227,74 @@ const createMobileMenu = () => {
 window.addEventListener('resize', createMobileMenu);
 createMobileMenu();
 
+// Snow Effect
+function createSnowflake() {
+    const snowflake = document.createElement('div');
+    snowflake.className = 'snowflake';
+    snowflake.innerHTML = '❄';
+    
+    // Random size between 0.5em and 1.5em
+    const size = Math.random() * 1 + 0.5;
+    snowflake.style.fontSize = size + 'em';
+    
+    // Random starting position
+    snowflake.style.left = Math.random() * 100 + '%';
+    
+    // Random animation duration between 3 and 8 seconds
+    const duration = Math.random() * 5 + 3;
+    snowflake.style.animationDuration = duration + 's';
+    
+    // Random drift (horizontal movement)
+    const drift = (Math.random() - 0.5) * 200;
+    snowflake.style.setProperty('--drift', drift + 'px');
+    
+    // Random delay
+    snowflake.style.animationDelay = Math.random() * 2 + 's';
+    
+    // Random opacity
+    snowflake.style.opacity = Math.random() * 0.5 + 0.5;
+    
+    return snowflake;
+}
+
+function initSnow() {
+    const snowContainer = document.createElement('div');
+    snowContainer.className = 'snow-container';
+    document.body.appendChild(snowContainer);
+    
+    // Create initial snowflakes
+    const snowflakeCount = 50;
+    for (let i = 0; i < snowflakeCount; i++) {
+        const snowflake = createSnowflake();
+        snowContainer.appendChild(snowflake);
+        
+        // Remove snowflake after animation completes
+        setTimeout(() => {
+            if (snowflake.parentNode) {
+                snowflake.parentNode.removeChild(snowflake);
+            }
+        }, 10000);
+    }
+    
+    // Continuously add new snowflakes
+    setInterval(() => {
+        if (snowContainer.children.length < snowflakeCount) {
+            const snowflake = createSnowflake();
+            snowContainer.appendChild(snowflake);
+            
+            setTimeout(() => {
+                if (snowflake.parentNode) {
+                    snowflake.parentNode.removeChild(snowflake);
+                }
+            }, 10000);
+        }
+    }, 500);
+}
+
+// Initialize snow effect when page loads
+window.addEventListener('load', () => {
+    initSnow();
+});
+
 console.log('Teasy Gift Box - Site yüklendi! 🎁');
 
