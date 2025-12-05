@@ -231,28 +231,31 @@ createMobileMenu();
 function createSnowflake() {
     const snowflake = document.createElement('div');
     snowflake.className = 'snowflake';
-    snowflake.innerHTML = '❄';
     
-    // Random size between 0.5em and 1.5em
-    const size = Math.random() * 1 + 0.5;
+    // Use different snowflake characters for variety
+    const snowflakeChars = ['❄', '❅', '❆', '✻', '✼', '✽', '✾', '✿'];
+    snowflake.innerHTML = snowflakeChars[Math.floor(Math.random() * snowflakeChars.length)];
+    
+    // Random size between 0.4em and 1.8em (slightly larger range)
+    const size = Math.random() * 1.4 + 0.4;
     snowflake.style.fontSize = size + 'em';
     
     // Random starting position
     snowflake.style.left = Math.random() * 100 + '%';
     
-    // Random animation duration between 3 and 8 seconds
-    const duration = Math.random() * 5 + 3;
+    // Random animation duration between 4 and 10 seconds (slower for more visible effect)
+    const duration = Math.random() * 6 + 4;
     snowflake.style.animationDuration = duration + 's';
     
-    // Random drift (horizontal movement)
-    const drift = (Math.random() - 0.5) * 200;
+    // Random drift (horizontal movement) - increased range
+    const drift = (Math.random() - 0.5) * 300;
     snowflake.style.setProperty('--drift', drift + 'px');
     
     // Random delay
-    snowflake.style.animationDelay = Math.random() * 2 + 's';
+    snowflake.style.animationDelay = Math.random() * 3 + 's';
     
-    // Random opacity
-    snowflake.style.opacity = Math.random() * 0.5 + 0.5;
+    // Higher opacity for better visibility (0.6 to 1.0)
+    snowflake.style.opacity = Math.random() * 0.4 + 0.6;
     
     return snowflake;
 }
@@ -262,8 +265,8 @@ function initSnow() {
     snowContainer.className = 'snow-container';
     document.body.appendChild(snowContainer);
     
-    // Create initial snowflakes
-    const snowflakeCount = 50;
+    // Create initial snowflakes - increased count for more density
+    const snowflakeCount = 150;
     for (let i = 0; i < snowflakeCount; i++) {
         const snowflake = createSnowflake();
         snowContainer.appendChild(snowflake);
@@ -273,11 +276,12 @@ function initSnow() {
             if (snowflake.parentNode) {
                 snowflake.parentNode.removeChild(snowflake);
             }
-        }, 10000);
+        }, 12000);
     }
     
-    // Continuously add new snowflakes
+    // Continuously add new snowflakes more frequently
     setInterval(() => {
+        // Keep adding snowflakes to maintain density
         if (snowContainer.children.length < snowflakeCount) {
             const snowflake = createSnowflake();
             snowContainer.appendChild(snowflake);
@@ -286,9 +290,9 @@ function initSnow() {
                 if (snowflake.parentNode) {
                     snowflake.parentNode.removeChild(snowflake);
                 }
-            }, 10000);
+            }, 12000);
         }
-    }, 500);
+    }, 200); // More frequent creation (every 200ms instead of 500ms)
 }
 
 // Initialize snow effect when page loads

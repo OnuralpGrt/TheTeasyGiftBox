@@ -543,24 +543,26 @@ body {
     color: #fff;
     font-size: 1em;
     font-family: Arial, sans-serif;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 1), 0 0 15px rgba(255, 255, 255, 0.8);
     animation: snowfall linear infinite;
-    opacity: 0.8;
+    opacity: 0.9;
+    will-change: transform;
+    pointer-events: none;
 }
 
 @keyframes snowfall {
     0% {
-        transform: translateY(-100vh) translateX(0) rotate(0deg);
+        transform: translateY(-10vh) translateX(0) rotate(0deg);
         opacity: 0;
     }
-    10% {
-        opacity: 0.8;
+    5% {
+        opacity: 0.9;
     }
-    90% {
-        opacity: 0.8;
+    95% {
+        opacity: 0.9;
     }
     100% {
-        transform: translateY(100vh) translateX(var(--drift)) rotate(360deg);
+        transform: translateY(110vh) translateX(var(--drift)) rotate(360deg);
         opacity: 0;
     }
 }
