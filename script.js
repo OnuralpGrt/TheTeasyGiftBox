@@ -1,0 +1,1 @@
+// Gelecekteki JavaScript kodlarınız için
