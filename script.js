@@ -300,5 +300,31 @@ window.addEventListener('load', () => {
     initSnow();
 });
 
+// Contact Form Handler
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form values
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            subject: document.getElementById('subject').value,
+            message: document.getElementById('message').value
+        };
+        
+        // Show success notification
+        showNotification('Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız. 💌');
+        
+        // Reset form
+        contactForm.reset();
+        
+        // Here you would normally send the data to a server
+        console.log('Form Data:', formData);
+    });
+}
+
 console.log('Teasy Gift Box - Site yüklendi! 🎁');
 
