@@ -356,7 +356,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Öğretmenler Günü Kutusu ürünleri
     const ogretmenlerProducts = [{
-        image: 'ogretmenler-gunu-1.jpeg',
+        image: '0.png',
         title: 'Öğretmenler Günü Kutusu 1',
         description: 'Öğretmenlerinize duyduğunuz saygı ve sevgiyi en güzel şekilde ifade eden, özenle hazırlanmış özel hediye kutusu. Çiçekler, parfüm, defter ve Türk kahvesi ile dolu özel tasarım kutu.'
     }];
@@ -425,7 +425,7 @@ document.addEventListener('DOMContentLoaded', function() {
             productCard.className = 'product-card';
             productCard.innerHTML = `
                 <div class="product-image">
-                    <img src="${product.image}" alt="${product.title}" onerror="this.src='image0.jpeg'; this.onerror=null;">
+                    <img src="${product.image}" alt="${product.title}">
                     <div class="product-overlay">
                         <button class="btn btn-small">Hızlı Görüntüle</button>
                     </div>
