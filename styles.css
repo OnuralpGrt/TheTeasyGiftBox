@@ -562,12 +562,24 @@ html {
     margin-bottom: 1rem;
     color: var(--dark-color);
     min-height: 3rem;
+    max-height: 3rem;
     flex-shrink: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .product-info .product-description {
     flex-grow: 1;
     margin-bottom: 1rem;
+    min-height: 4.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .product-info .btn {
