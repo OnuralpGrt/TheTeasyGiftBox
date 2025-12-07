@@ -361,33 +361,26 @@ document.addEventListener('DOMContentLoaded', function() {
         description: 'Öğretmenlerinize duyduğunuz saygı ve sevgiyi en güzel şekilde ifade eden, özenle hazırlanmış özel hediye kutusu. Çiçekler, parfüm, defter ve Türk kahvesi ile dolu özel tasarım kutu.'
     }];
     
-    // Tüm ürünleri sakla (varsayılan ürünler)
-    let defaultProducts = [];
-    const productCards = productsGrid.querySelectorAll('.product-card');
-    if (productCards.length > 0) {
-        defaultProducts = Array.from(productCards).map(card => ({
-            html: card.outerHTML
-        }));
-    }
-    
     // Kategori tıklama olayları
     categoryCards.forEach(card => {
         card.addEventListener('click', function() {
             const category = this.getAttribute('data-category');
+            const productsSection = document.getElementById('products');
             
-            // Smooth scroll to products section
-            document.getElementById('products').scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+            // Show products section and scroll to it
+            if (productsSection) {
+                productsSection.style.display = 'block';
+                productsSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
             
             // Filter products based on category
             if (category === 'yilbasi') {
                 displayYilbasiProducts();
             } else if (category === 'ogretmenler') {
                 displayOgretmenlerProducts();
-            } else {
-                displayDefaultProducts();
             }
         });
     });
@@ -452,18 +445,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100);
     }
     
-    // Varsayılan ürünleri göster
-    function displayDefaultProducts() {
-        productsTitle.textContent = 'Popüler Ürünler';
-        if (defaultProducts.length > 0) {
-            productsGrid.innerHTML = defaultProducts.map(p => p.html).join('');
-        }
-        
-        // Re-initialize animations
-        setTimeout(() => {
-            initScrollAnimations();
-        }, 100);
-    }
 });
 
 
