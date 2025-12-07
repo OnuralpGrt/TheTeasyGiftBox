@@ -109,7 +109,7 @@ const observerOptions = {
     rootMargin: '0px 0px -50px 0px'
 };
 
-const observer = new IntersectionObserver((entries) => {
+let observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
@@ -118,13 +118,19 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe all cards
-document.querySelectorAll('.product-card, .category-card, .feature-item').forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(30px)';
-    card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-    observer.observe(card);
-});
+// Initialize scroll animations
+function initScrollAnimations() {
+    // Observe all cards
+    document.querySelectorAll('.product-card, .category-card, .feature-item').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        observer.observe(card);
+    });
+}
+
+// Initialize on page load
+initScrollAnimations();
 
 // Search Functionality
 const searchIcon = document.querySelector('.fa-search');
@@ -330,5 +336,97 @@ document.querySelectorAll('img').forEach(img => {
     });
 });
 
-console.log('Teasy Gift Box - Site yüklendi! 🎁');
+// Category Filter Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const categoryCards = document.querySelectorAll('.category-card[data-category]');
+    const productsGrid = document.getElementById('products-grid');
+    const productsTitle = document.getElementById('products-title');
+    
+    if (!productsGrid || !productsTitle) return;
+    
+    // Yılbaşı Kutusu ürünleri (image0.jpeg'den image16.jpeg'e kadar)
+    const yilbasiProducts = [];
+    for (let i = 0; i <= 16; i++) {
+        yilbasiProducts.push({
+            image: `image${i}.jpeg`,
+            title: `Yılbaşı Kutusu ${i + 1}`,
+            description: 'Yeni yılı kutlamak için özel olarak tasarlanmış, neşe dolu ve eğlenceli ürünlerle hazırlanmış hediye kutusu.'
+        });
+    }
+    
+    // Tüm ürünleri sakla (varsayılan ürünler)
+    let defaultProducts = [];
+    const productCards = productsGrid.querySelectorAll('.product-card');
+    if (productCards.length > 0) {
+        defaultProducts = Array.from(productCards).map(card => ({
+            html: card.outerHTML
+        }));
+    }
+    
+    // Kategori tıklama olayları
+    categoryCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const category = this.getAttribute('data-category');
+            
+            // Smooth scroll to products section
+            document.getElementById('products').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            // Filter products based on category
+            if (category === 'yilbasi') {
+                displayYilbasiProducts();
+            } else {
+                displayDefaultProducts();
+            }
+        });
+    });
+    
+    // Yılbaşı ürünlerini göster
+    function displayYilbasiProducts() {
+        productsTitle.textContent = 'Yılbaşı Kutusu Ürünleri';
+        productsGrid.innerHTML = '';
+        
+        yilbasiProducts.forEach((product, index) => {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            productCard.innerHTML = `
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.title}" onerror="this.style.display='none'">
+                    <div class="product-overlay">
+                        <button class="btn btn-small">Hızlı Görüntüle</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>${product.title}</h3>
+                    <p class="product-description">${product.description}</p>
+                    <a href="https://www.instagram.com/theteasygiftbox_/?igsh=MWFhczRsdGFwZ3RvcQ%3D%3D" target="_blank" class="btn btn-price">Fiyat Bilgisi Al</a>
+                </div>
+            `;
+            productsGrid.appendChild(productCard);
+        });
+        
+        // Re-initialize animations
+        setTimeout(() => {
+            initScrollAnimations();
+        }, 100);
+    }
+    
+    // Varsayılan ürünleri göster
+    function displayDefaultProducts() {
+        productsTitle.textContent = 'Popüler Ürünler';
+        if (defaultProducts.length > 0) {
+            productsGrid.innerHTML = defaultProducts.map(p => p.html).join('');
+        }
+        
+        // Re-initialize animations
+        setTimeout(() => {
+            initScrollAnimations();
+        }, 100);
+    }
+});
+
+
+console.log('The Teasy Gift Box - Site yüklendi! 🎁');
 

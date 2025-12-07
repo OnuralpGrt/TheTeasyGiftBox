@@ -411,6 +411,10 @@ html {
     box-shadow: var(--shadow-hover);
 }
 
+.category-card[data-category]:active {
+    transform: translateY(-5px);
+}
+
 .category-image {
     position: relative;
     height: 300px;
