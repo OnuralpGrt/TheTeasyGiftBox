@@ -816,6 +816,11 @@ html {
     margin-bottom: 2rem;
 }
 
+.footer-section {
+    display: flex;
+    flex-direction: column;
+}
+
 .footer-section h3,
 .footer-section h4 {
     margin-bottom: 1rem;
@@ -824,6 +829,9 @@ html {
 
 .footer-section ul {
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .footer-section ul li {
@@ -1145,14 +1153,38 @@ html {
     
     .footer-section {
         margin-bottom: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     
-    .footer-section h3 {
+    .footer-section h3,
+    .footer-section h4 {
         font-size: 1.1rem;
         margin-bottom: 1rem;
+        text-align: center;
     }
     
-    .footer-section p,
+    .footer-section p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        text-align: center;
+        font-size: 0.9rem;
+    }
+    
+    .footer-section ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .footer-section ul li {
+        text-align: center;
+    }
+    
     .footer-section a {
         font-size: 0.9rem;
     }
@@ -1348,12 +1380,27 @@ html {
         gap: 1.5rem;
     }
     
-    .footer-section h3 {
-        font-size: 1rem;
-        margin-bottom: 0.75rem;
+    .footer-section {
+        align-items: center;
     }
     
-    .footer-section p,
+    .footer-section h3,
+    .footer-section h4 {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+        text-align: center;
+    }
+    
+    .footer-section p {
+        justify-content: center;
+        text-align: center;
+        font-size: 0.85rem;
+    }
+    
+    .footer-section ul {
+        align-items: center;
+    }
+    
     .footer-section a {
         font-size: 0.85rem;
     }
