@@ -317,5 +317,18 @@ if (contactForm) {
     });
 }
 
+// Image Error Handler
+document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('error', function() {
+        console.warn('Resim yüklenemedi:', this.src);
+        // Fallback placeholder eklenebilir
+        this.style.display = 'none';
+    });
+    
+    img.addEventListener('load', function() {
+        this.style.opacity = '1';
+    });
+});
+
 console.log('Teasy Gift Box - Site yüklendi! 🎁');
 
