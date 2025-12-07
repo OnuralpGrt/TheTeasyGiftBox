@@ -344,9 +344,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (!productsGrid || !productsTitle) return;
     
-    // Yılbaşı Kutusu ürünleri (image0.jpeg'den image16.jpeg'e kadar)
+    // Yılbaşı Kutusu ürünleri (image0.jpeg'den image15.jpeg'e kadar - 16 ürün)
     const yilbasiProducts = [];
-    for (let i = 0; i <= 16; i++) {
+    for (let i = 0; i <= 15; i++) {
         yilbasiProducts.push({
             image: `image${i}.jpeg`,
             title: `Yılbaşı Kutusu ${i + 1}`,
