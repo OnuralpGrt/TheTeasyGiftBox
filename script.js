@@ -425,7 +425,7 @@ document.addEventListener('DOMContentLoaded', function() {
             productCard.className = 'product-card';
             productCard.innerHTML = `
                 <div class="product-image">
-                    <img src="${product.image}" alt="${product.title}" onerror="this.style.display='none'">
+                    <img src="${product.image}" alt="${product.title}" onerror="this.src='image0.jpeg'; this.onerror=null;">
                     <div class="product-overlay">
                         <button class="btn btn-small">Hızlı Görüntüle</button>
                     </div>

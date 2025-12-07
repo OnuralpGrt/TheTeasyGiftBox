@@ -486,7 +486,7 @@ html {
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
@@ -496,6 +496,9 @@ html {
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .product-card:hover {
@@ -506,11 +509,13 @@ html {
 .product-image {
     position: relative;
     height: 350px;
+    width: 100%;
     overflow: hidden;
     background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 .product-image img {
@@ -547,6 +552,9 @@ html {
 
 .product-info {
     padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .product-info h3 {
@@ -554,6 +562,17 @@ html {
     margin-bottom: 1rem;
     color: var(--dark-color);
     min-height: 3rem;
+    flex-shrink: 0;
+}
+
+.product-info .product-description {
+    flex-grow: 1;
+    margin-bottom: 1rem;
+}
+
+.product-info .btn {
+    margin-top: auto;
+    flex-shrink: 0;
 }
 
 .product-description {
