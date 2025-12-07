@@ -20,6 +20,13 @@ body {
     line-height: 1.6;
     color: var(--dark-color);
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .container {
@@ -91,6 +98,13 @@ body {
     cursor: pointer;
     padding: 0.5rem;
     transition: color 0.3s;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    min-height: 44px;
+    min-width: 44px;
+    display: none;
+    align-items: center;
+    justify-content: center;
 }
 
 .mobile-menu-toggle:hover {
@@ -108,6 +122,13 @@ body {
     font-size: 1.2rem;
     position: relative;
     transition: color 0.3s;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .icon-link:hover {
@@ -280,7 +301,9 @@ body {
 
 /* Buttons */
 .btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 1rem 2rem;
     text-decoration: none;
     border-radius: 50px;
@@ -289,6 +312,10 @@ body {
     border: none;
     cursor: pointer;
     font-size: 1rem;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    min-height: 44px;
+    min-width: 44px;
 }
 
 .btn-primary {
@@ -898,24 +925,44 @@ body {
     .contact-content {
         grid-template-columns: 1fr;
     }
+    
+    .categories-grid,
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-@media (max-width: 768px) {
+    @media (max-width: 768px) {
     .mobile-menu-toggle {
-        display: block;
+        display: flex;
+    }
+    
+    .header {
+        padding: 0.75rem 0;
+    }
+    
+    .header-content {
+        position: relative;
     }
     
     .nav {
         position: fixed;
-        top: 70px;
+        top: 60px;
         left: -100%;
         width: 100%;
         background: var(--white);
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         flex-direction: column;
-        padding: 2rem;
+        padding: 1.5rem;
         transition: left 0.3s ease;
         z-index: 999;
+        max-height: calc(100vh - 60px);
+        overflow-y: auto;
     }
     
     .nav.active {
@@ -927,6 +974,7 @@ body {
         border-bottom: 1px solid #f0f0f0;
         width: 100%;
         text-align: center;
+        font-size: 1rem;
     }
     
     .nav a:last-child {
@@ -934,36 +982,61 @@ body {
     }
     
     .header-icons {
-        gap: 1rem;
+        gap: 0.75rem;
+    }
+    
+    .header-icons .icon-link {
+        font-size: 1.1rem;
     }
     
     .logo h1 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+    }
+    
+    .search-container {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+        background: var(--white);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        z-index: 998;
+    }
+    
+    .search-container input {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 0.9rem;
     }
 
     .hero {
-        height: 80vh;
+        height: 70vh;
+        min-height: 500px;
         padding: 2rem 1rem;
     }
 
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
         line-height: 1.2;
+        margin-bottom: 1rem;
     }
 
     .hero-subtitle {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         padding: 0 1rem;
+        margin-bottom: 1.5rem;
     }
     
     .btn-primary {
-        padding: 0.8rem 1.5rem;
+        padding: 0.75rem 1.5rem;
         font-size: 0.9rem;
     }
 
     .section-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
         padding: 0 1rem;
+        margin-bottom: 2rem;
     }
 
     .categories-grid,
@@ -972,32 +1045,74 @@ body {
         gap: 1.5rem;
     }
     
+    .category-card,
+    .product-card {
+        margin-bottom: 0;
+    }
+    
+    .category-image {
+        height: 250px;
+    }
+    
+    .product-image {
+        height: 300px;
+    }
+    
     .categories,
     .products,
     .about,
-    .contact {
-        padding: 3rem 0;
+    .contact,
+    .features {
+        padding: 2.5rem 0;
     }
     
-    .about-text p {
-        font-size: 1rem;
+    .container {
+        padding: 0 15px;
+    }
+    
+    .about-text {
         padding: 0 1rem;
     }
     
+    .about-text p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+    
     .about-intro {
-        font-size: 1.1rem !important;
+        font-size: 1.05rem !important;
+        padding: 0 1rem;
+    }
+    
+    .contact-content {
+        gap: 2rem;
     }
     
     .contact-form-container {
         padding: 1.5rem;
     }
     
+    .contact-form input,
+    .contact-form textarea {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+    
     .info-box {
-        padding: 1.5rem;
+        padding: 1.25rem;
+    }
+    
+    .info-box h3 {
+        font-size: 1.1rem;
+    }
+    
+    .info-box p,
+    .info-box a {
+        font-size: 0.9rem;
     }
     
     .features-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         gap: 1.5rem;
     }
     
@@ -1007,41 +1122,249 @@ body {
     
     .feature-item i {
         font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .feature-item h3 {
+        font-size: 1.1rem;
+    }
+    
+    .feature-item p {
+        font-size: 0.9rem;
+    }
+    
+    .footer {
+        padding: 2rem 0 1rem;
     }
     
     .footer-content {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 2rem;
     }
     
     .footer-section {
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .footer-section h3 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .footer-section p,
+    .footer-section a {
+        font-size: 0.9rem;
+    }
+    
+    .social-links {
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .social-links a {
+        font-size: 1.3rem;
+    }
+    
+    .product-description {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+    
+    .btn-small {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
     }
 }
 
 @media (max-width: 480px) {
-    .hero-title {
-        font-size: 2rem;
+    .header {
+        padding: 0.5rem 0;
     }
     
-    .hero-subtitle {
+    .logo h1 {
+        font-size: 1.2rem;
+    }
+    
+    .mobile-menu-toggle {
+        font-size: 1.3rem;
+        padding: 0.4rem;
+        display: flex;
+    }
+    
+    .header-icons .icon-link {
         font-size: 1rem;
     }
     
-    .section-title {
+    .hero {
+        height: 60vh;
+        min-height: 400px;
+        padding: 1.5rem 0.75rem;
+    }
+    
+    .hero-title {
         font-size: 1.75rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.95rem;
+        padding: 0 0.5rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .btn-primary {
+        padding: 0.65rem 1.25rem;
+        font-size: 0.85rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+        padding: 0 0.75rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .categories,
+    .products,
+    .about,
+    .contact,
+    .features {
+        padding: 2rem 0;
+    }
+    
+    .container {
+        padding: 0 12px;
+    }
+    
+    .category-image {
+        height: 220px;
+    }
+    
+    .product-image {
+        height: 280px;
+    }
+    
+    .category-card h3,
+    .product-card h3 {
+        font-size: 1.1rem;
+        padding: 1rem 0.75rem;
+    }
+    
+    .product-description {
+        font-size: 0.85rem;
+        padding: 0 0.75rem;
+        line-height: 1.6;
+    }
+    
+    .btn-small {
+        padding: 0.55rem 1rem;
+        font-size: 0.8rem;
+        margin: 0.75rem;
     }
     
     .features-grid {
         grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+    
+    .feature-item {
+        padding: 1.25rem;
+    }
+    
+    .feature-item i {
+        font-size: 1.75rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .feature-item h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .feature-item p {
+        font-size: 0.85rem;
+    }
+    
+    .about-text {
+        padding: 0 0.75rem;
+    }
+    
+    .about-text p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+    
+    .about-intro {
+        font-size: 1rem !important;
+        padding: 0 0.75rem;
+    }
+    
+    .contact-content {
+        gap: 1.5rem;
+    }
+    
+    .contact-form-container {
+        padding: 1.25rem;
+    }
+    
+    .contact-form input,
+    .contact-form textarea {
+        padding: 0.65rem;
+        font-size: 0.85rem;
+    }
+    
+    .contact-form label {
+        font-size: 0.9rem;
+    }
+    
+    .info-box {
+        padding: 1rem;
+    }
+    
+    .info-box h3 {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .info-box p,
+    .info-box a {
+        font-size: 0.85rem;
+    }
+    
+    .info-box i {
+        font-size: 1.1rem;
     }
     
     .contact-info {
         grid-template-columns: 1fr;
+        gap: 1rem;
     }
     
-    .container {
-        padding: 0 15px;
+    .footer {
+        padding: 1.5rem 0 1rem;
+    }
+    
+    .footer-content {
+        gap: 1.5rem;
+    }
+    
+    .footer-section h3 {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .footer-section p,
+    .footer-section a {
+        font-size: 0.85rem;
+    }
+    
+    .social-links a {
+        font-size: 1.2rem;
+    }
+    
+    .footer-bottom {
+        padding-top: 1.5rem;
+        font-size: 0.8rem;
     }
 }
 
