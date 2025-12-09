@@ -368,6 +368,20 @@ document.addEventListener('DOMContentLoaded', function() {
         description: 'İçinizden geldiği gibi, özel bir anı yakalamak için tasarlanmış özel hediye kutusu. Sevdiklerinize sürpriz yapmak için mükemmel bir seçim.'
     }];
     
+    // Yeni İş Kutusu ürünleri
+    const yeniisProducts = [{
+        image: 'yeni_iş.jpg',
+        title: 'Yeni İş Kutusu 1',
+        description: 'Yeni işe başlayan sevdikleriniz için özel olarak hazırlanmış, başarı dolu bir kariyer yolculuğu için motivasyon veren hediye kutusu. Rebul parfüm, defter, Türk kahvesi ve çikolata ile dolu özel tasarım kutu.'
+    }];
+    
+    // Doğum Günü Kutusu ürünleri
+    const dogumProducts = [{
+        image: 'Dogum.jpg',
+        title: 'Doğum Günü Kutusu 1',
+        description: 'Sevdiklerinizin özel gününü unutulmaz kılmak için özenle hazırlanmış doğum günü hediye kutusu. Özel tasarım ve kaliteli ürünlerle dolu, sevgi dolu bir hediye.'
+    }];
+    
     // Kategori tıklama olayları
     categoryCards.forEach(card => {
         card.addEventListener('click', function() {
@@ -390,6 +404,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 displayOgretmenlerProducts();
             } else if (category === 'icimden') {
                 displayIcimdenProducts();
+            } else if (category === 'yeniis') {
+                displayYeniisProducts();
+            } else if (category === 'dogum') {
+                displayDogumProducts();
             }
         });
     });
@@ -460,6 +478,66 @@ document.addEventListener('DOMContentLoaded', function() {
         productsGrid.innerHTML = '';
         
         icimdenProducts.forEach((product, index) => {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            productCard.innerHTML = `
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.title}">
+                    <div class="product-overlay">
+                        <button class="btn btn-small">Hızlı Görüntüle</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>${product.title}</h3>
+                    <p class="product-description">${product.description}</p>
+                    <a href="https://www.instagram.com/theteasygiftbox_/?igsh=MWFhczRsdGFwZ3RvcQ%3D%3D" target="_blank" class="btn btn-price">Fiyat Bilgisi Al</a>
+                </div>
+            `;
+            productsGrid.appendChild(productCard);
+        });
+        
+        // Re-initialize animations
+        setTimeout(() => {
+            initScrollAnimations();
+        }, 100);
+    }
+    
+    // Yeni İş ürünlerini göster
+    function displayYeniisProducts() {
+        productsTitle.textContent = 'Yeni İş Kutusu Ürünleri';
+        productsGrid.innerHTML = '';
+        
+        yeniisProducts.forEach((product, index) => {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            productCard.innerHTML = `
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.title}">
+                    <div class="product-overlay">
+                        <button class="btn btn-small">Hızlı Görüntüle</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>${product.title}</h3>
+                    <p class="product-description">${product.description}</p>
+                    <a href="https://www.instagram.com/theteasygiftbox_/?igsh=MWFhczRsdGFwZ3RvcQ%3D%3D" target="_blank" class="btn btn-price">Fiyat Bilgisi Al</a>
+                </div>
+            `;
+            productsGrid.appendChild(productCard);
+        });
+        
+        // Re-initialize animations
+        setTimeout(() => {
+            initScrollAnimations();
+        }, 100);
+    }
+    
+    // Doğum Günü ürünlerini göster
+    function displayDogumProducts() {
+        productsTitle.textContent = 'Doğum Günü Kutusu Ürünleri';
+        productsGrid.innerHTML = '';
+        
+        dogumProducts.forEach((product, index) => {
             const productCard = document.createElement('div');
             productCard.className = 'product-card';
             productCard.innerHTML = `
