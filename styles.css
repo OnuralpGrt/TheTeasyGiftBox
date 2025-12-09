@@ -1450,3 +1450,148 @@ html {
     }
 }
 
+/* Promo Modal */
+.promo-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 12000;
+}
+
+.promo-modal.show {
+    display: flex;
+}
+
+.promo-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+}
+
+.promo-dialog {
+    position: relative;
+    width: 90%;
+    max-width: 420px;
+    z-index: 12001;
+    padding: 1rem;
+}
+
+.promo-card {
+    position: relative;
+    background: linear-gradient(160deg, #b3583c, #a44a32, #8f3a2a);
+    border-radius: 20px;
+    padding: 2.5rem 1.75rem 2.25rem;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+
+.promo-card::before,
+.promo-card::after {
+    content: '';
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 60%);
+    filter: blur(8px);
+}
+
+.promo-card::before {
+    top: -40px;
+    left: -20px;
+}
+
+.promo-card::after {
+    bottom: -40px;
+    right: -10px;
+}
+
+.promo-icon {
+    width: 68px;
+    height: 68px;
+    margin: 0 auto 1rem;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #f7d07a, #e0a64f);
+    display: grid;
+    place-items: center;
+    color: #8f3a2a;
+    font-size: 1.8rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.promo-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 0.75rem;
+    color: #fff;
+}
+
+.promo-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #f8f1e8;
+    margin-bottom: 1.4rem;
+}
+
+.promo-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #ffd27f, #ffb347);
+    color: #5b240f;
+    padding: 0.9rem 1.4rem;
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.promo-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.25);
+}
+
+.promo-cta i {
+    font-size: 1.2rem;
+}
+
+.promo-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.2s ease;
+}
+
+.promo-close:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+@media (max-width: 480px) {
+    .promo-card {
+        padding: 2.2rem 1.3rem 2rem;
+    }
+    
+    .promo-text {
+        font-size: 0.95rem;
+    }
+    
+    .promo-cta {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
