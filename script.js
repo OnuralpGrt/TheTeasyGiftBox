@@ -361,6 +361,13 @@ document.addEventListener('DOMContentLoaded', function() {
         description: 'Öğretmenlerinize duyduğunuz saygı ve sevgiyi en güzel şekilde ifade eden, özenle hazırlanmış özel hediye kutusu. Çiçekler, parfüm, defter ve Türk kahvesi ile dolu özel tasarım kutu.'
     }];
     
+    // İçimden Geldi Kutusu ürünleri
+    const icimdenProducts = [{
+        image: 'içimden_geldi.jpg',
+        title: 'İçimden Geldi Kutusu 1',
+        description: 'İçinizden geldiği gibi, özel bir anı yakalamak için tasarlanmış özel hediye kutusu. Sevdiklerinize sürpriz yapmak için mükemmel bir seçim.'
+    }];
+    
     // Kategori tıklama olayları
     categoryCards.forEach(card => {
         card.addEventListener('click', function() {
@@ -381,6 +388,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 displayYilbasiProducts();
             } else if (category === 'ogretmenler') {
                 displayOgretmenlerProducts();
+            } else if (category === 'icimden') {
+                displayIcimdenProducts();
             }
         });
     });
@@ -421,6 +430,36 @@ document.addEventListener('DOMContentLoaded', function() {
         productsGrid.innerHTML = '';
         
         ogretmenlerProducts.forEach((product, index) => {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            productCard.innerHTML = `
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.title}">
+                    <div class="product-overlay">
+                        <button class="btn btn-small">Hızlı Görüntüle</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>${product.title}</h3>
+                    <p class="product-description">${product.description}</p>
+                    <a href="https://www.instagram.com/theteasygiftbox_/?igsh=MWFhczRsdGFwZ3RvcQ%3D%3D" target="_blank" class="btn btn-price">Fiyat Bilgisi Al</a>
+                </div>
+            `;
+            productsGrid.appendChild(productCard);
+        });
+        
+        // Re-initialize animations
+        setTimeout(() => {
+            initScrollAnimations();
+        }, 100);
+    }
+    
+    // İçimden Geldi ürünlerini göster
+    function displayIcimdenProducts() {
+        productsTitle.textContent = 'İçimden Geldi Kutusu Ürünleri';
+        productsGrid.innerHTML = '';
+        
+        icimdenProducts.forEach((product, index) => {
             const productCard = document.createElement('div');
             productCard.className = 'product-card';
             productCard.innerHTML = `
