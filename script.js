@@ -1,36 +1,39 @@
-// Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+// Wait for DOM to be ready
+document.addEventListener('DOMContentLoaded', function() {
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Cart Functionality (only if elements exist)
+    const cartBadge = document.querySelector('.cart-badge');
+    const cartButtons = document.querySelectorAll('.btn-cart');
+    
+    if (cartBadge && cartButtons.length > 0) {
+        let cartCount = 0;
+        cartButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                cartCount++;
+                if (cartBadge) {
+                    cartBadge.textContent = cartCount;
+                    cartBadge.style.transform = 'scale(1.3)';
+                    setTimeout(() => {
+                        cartBadge.style.transform = 'scale(1)';
+                    }, 200);
+                }
+                showNotification('Ürün sepete eklendi!');
             });
-        }
-    });
-});
-
-// Cart Functionality
-let cartCount = 0;
-const cartBadge = document.querySelector('.cart-badge');
-const cartButtons = document.querySelectorAll('.btn-cart');
-
-cartButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        cartCount++;
-        cartBadge.textContent = cartCount;
-        
-        // Animation
-        cartBadge.style.transform = 'scale(1.3)';
-        setTimeout(() => {
-            cartBadge.style.transform = 'scale(1)';
-        }, 200);
-        
-        // Show notification
-        showNotification('Ürün sepete eklendi!');
-    });
+        });
+    }
 });
 
 // Notification Function
@@ -88,19 +91,19 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Header Scroll Effect
-let lastScroll = 0;
-const header = document.querySelector('.header');
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-        header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.2)';
-    } else {
-        header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+document.addEventListener('DOMContentLoaded', function() {
+    const header = document.querySelector('.header');
+    if (header) {
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.2)';
+            } else {
+                header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+            }
+        });
     }
-    
-    lastScroll = currentScroll;
 });
 
 // Intersection Observer for Animations
@@ -129,8 +132,10 @@ function initScrollAnimations() {
     });
 }
 
-// Initialize on page load
-initScrollAnimations();
+// Initialize on page load (after DOM is ready)
+document.addEventListener('DOMContentLoaded', function() {
+    initScrollAnimations();
+});
 
 // Search Functionality
 const searchIcon = document.querySelector('.fa-search');
@@ -293,46 +298,54 @@ function initSnow() {
 }
 
 // Initialize snow effect when page loads
-window.addEventListener('load', () => {
+document.addEventListener('DOMContentLoaded', function() {
     initSnow();
 });
 
 // Contact Form Handler
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form values
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            subject: document.getElementById('subject').value,
-            message: document.getElementById('message').value
-        };
-        
-        // Show success notification
-        showNotification('Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız. 💌');
-        
-        // Reset form
-        contactForm.reset();
-        
-        // Here you would normally send the data to a server
-        console.log('Form Data:', formData);
-    });
-}
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const nameField = document.getElementById('name');
+            const emailField = document.getElementById('email');
+            const subjectField = document.getElementById('subject');
+            const messageField = document.getElementById('message');
+            
+            const formData = {
+                name: nameField ? nameField.value : '',
+                email: emailField ? emailField.value : '',
+                subject: subjectField ? subjectField.value : '',
+                message: messageField ? messageField.value : ''
+            };
+            
+            // Show success notification
+            showNotification('Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız. 💌');
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Here you would normally send the data to a server
+            console.log('Form Data:', formData);
+        });
+    }
+});
 
 // Image Error Handler
-document.querySelectorAll('img').forEach(img => {
-    img.addEventListener('error', function() {
-        console.warn('Resim yüklenemedi:', this.src);
-        // Fallback placeholder eklenebilir
-        this.style.display = 'none';
-    });
-    
-    img.addEventListener('load', function() {
-        this.style.opacity = '1';
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('error', function() {
+            console.warn('Resim yüklenemedi:', this.src);
+            // Fallback placeholder eklenebilir
+            this.style.display = 'none';
+        });
+        
+        img.addEventListener('load', function() {
+            this.style.opacity = '1';
+        });
     });
 });
 
@@ -564,5 +577,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
 });
 
-console.log('The Teasy Gift Box - Site yüklendi! 🎁');
+// Site yüklendi mesajı
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('The Teasy Gift Box - Site yüklendi! 🎁');
+});
 
