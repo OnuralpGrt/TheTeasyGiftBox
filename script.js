@@ -595,15 +595,10 @@ document.addEventListener('DOMContentLoaded', function() {
         popup.classList.remove('show');
         popup.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
-        // Store in localStorage to not show again in this session
-        localStorage.setItem('newYearPopupClosed', 'true');
     };
     
-    // Check if popup was already closed in this session
-    if (!localStorage.getItem('newYearPopupClosed')) {
-        // Show popup after a short delay
-        setTimeout(openPopup, 800);
-    }
+    // Show popup after a short delay (every time page loads)
+    setTimeout(openPopup, 800);
     
     // Close button event
     if (closeBtn) {
