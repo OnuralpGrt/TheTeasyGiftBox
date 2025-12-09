@@ -597,5 +597,38 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+// Instagram Modal
+document.addEventListener('DOMContentLoaded', function() {
+    const instagramModal = document.getElementById('instagramModal');
+    const modalClose = document.getElementById('modalClose');
+    const modalOverlay = instagramModal?.querySelector('.modal-overlay');
+    
+    if (!instagramModal) return;
+    
+    const openInstagramModal = () => {
+        instagramModal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    };
+    
+    const closeInstagramModal = () => {
+        instagramModal.classList.remove('show');
+        document.body.style.overflow = '';
+    };
+    
+    // Sayfa yüklendiğinde göster (kısa gecikmeyle)
+    setTimeout(openInstagramModal, 800);
+    
+    // Kapatma butonları
+    modalClose?.addEventListener('click', closeInstagramModal);
+    modalOverlay?.addEventListener('click', closeInstagramModal);
+    
+    // Escape tuşu ile kapat
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && instagramModal.classList.contains('show')) {
+            closeInstagramModal();
+        }
+    });
+});
+
 console.log('The Teasy Gift Box - Site yüklendi! 🎁');
 
