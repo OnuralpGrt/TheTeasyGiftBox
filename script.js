@@ -577,6 +577,52 @@ document.addEventListener('DOMContentLoaded', function() {
     
 });
 
+// New Year Campaign Popup
+document.addEventListener('DOMContentLoaded', function() {
+    const popup = document.getElementById('newYearPopup');
+    const backdrop = document.getElementById('popupBackdrop');
+    const closeBtn = document.getElementById('popupClose');
+    
+    if (!popup) return;
+    
+    const openPopup = () => {
+        popup.classList.add('show');
+        popup.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    };
+    
+    const closePopup = () => {
+        popup.classList.remove('show');
+        popup.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        // Store in localStorage to not show again in this session
+        localStorage.setItem('newYearPopupClosed', 'true');
+    };
+    
+    // Check if popup was already closed in this session
+    if (!localStorage.getItem('newYearPopupClosed')) {
+        // Show popup after a short delay
+        setTimeout(openPopup, 800);
+    }
+    
+    // Close button event
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closePopup);
+    }
+    
+    // Backdrop click event
+    if (backdrop) {
+        backdrop.addEventListener('click', closePopup);
+    }
+    
+    // Escape key to close
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && popup.classList.contains('show')) {
+            closePopup();
+        }
+    });
+});
+
 // Site yüklendi mesajı
 document.addEventListener('DOMContentLoaded', function() {
     console.log('The Teasy Gift Box - Site yüklendi! 🎁');

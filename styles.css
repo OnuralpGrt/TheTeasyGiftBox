@@ -1450,4 +1450,179 @@ html {
     }
 }
 
+/* New Year Campaign Popup */
+.new-year-popup {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 12000;
+}
+
+.new-year-popup.show {
+    display: flex;
+}
+
+.popup-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+}
+
+.popup-dialog {
+    position: relative;
+    width: 90%;
+    max-width: 420px;
+    z-index: 12001;
+    padding: 1rem;
+}
+
+.popup-card {
+    position: relative;
+    background: linear-gradient(160deg, #b3583c, #a44a32, #8f3a2a);
+    border-radius: 20px;
+    padding: 2.5rem 1.75rem 2.25rem;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+
+.popup-card::before,
+.popup-card::after {
+    content: '';
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 60%);
+    filter: blur(8px);
+}
+
+.popup-card::before {
+    top: -40px;
+    left: -20px;
+}
+
+.popup-card::after {
+    bottom: -40px;
+    right: -10px;
+}
+
+.popup-icon {
+    width: 68px;
+    height: 68px;
+    margin: 0 auto 1rem;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #f7d07a, #e0a64f);
+    display: grid;
+    place-items: center;
+    color: #8f3a2a;
+    font-size: 1.8rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.popup-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 0.75rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.popup-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #f8f1e8;
+    margin-bottom: 1.4rem;
+}
+
+.popup-instagram-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #f8f1e8;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background 0.2s ease, transform 0.2s ease;
+    font-weight: 500;
+}
+
+.popup-instagram-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.popup-instagram-link i {
+    font-size: 1.2rem;
+    color: #ffd27f;
+}
+
+.popup-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #ffd27f, #ffb347);
+    color: #5b240f;
+    padding: 0.9rem 1.4rem;
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.popup-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.25);
+}
+
+.popup-cta i {
+    font-size: 1.2rem;
+}
+
+.popup-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.2s ease;
+    font-size: 1.1rem;
+}
+
+.popup-close:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+@media (max-width: 480px) {
+    .popup-card {
+        padding: 2.2rem 1.3rem 2rem;
+    }
+    
+    .popup-text {
+        font-size: 0.95rem;
+    }
+    
+    .popup-cta {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .popup-instagram-link {
+        font-size: 0.95rem;
+    }
+}
+
 
