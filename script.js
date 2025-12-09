@@ -564,38 +564,5 @@ document.addEventListener('DOMContentLoaded', function() {
     
 });
 
-// Instagram promo modal
-document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('promoModal');
-    const backdrop = document.getElementById('promoBackdrop');
-    const closeBtn = document.getElementById('promoClose');
-    
-    if (!modal) return;
-    
-    const openModal = () => {
-        modal.classList.add('show');
-        modal.setAttribute('aria-hidden', 'false');
-    };
-    
-    const closeModal = () => {
-        modal.classList.remove('show');
-        modal.setAttribute('aria-hidden', 'true');
-    };
-    
-    // Açılışta kısa gecikmeyle göster
-    setTimeout(openModal, 800);
-    
-    closeBtn?.addEventListener('click', closeModal);
-    backdrop?.addEventListener('click', closeModal);
-    
-    // Escape ile kapat
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('show')) {
-            closeModal();
-        }
-    });
-});
-
-
 console.log('The Teasy Gift Box - Site yüklendi! 🎁');
 
