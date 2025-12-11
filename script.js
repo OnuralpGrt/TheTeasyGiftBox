@@ -369,7 +369,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Öğretmenler Günü Kutusu ürünleri
     const ogretmenlerProducts = [{
-        image: 'öğretmen.jpg',
+        image: 'ögretmen.jpg',
         title: 'Öğretmenler Günü Kutusu 1',
         description: 'Öğretmenlerinize duyduğunuz saygı ve sevgiyi en güzel şekilde ifade eden, özenle hazırlanmış özel hediye kutusu. Çiçekler, parfüm, defter ve Türk kahvesi ile dolu özel tasarım kutu.'
     }];
