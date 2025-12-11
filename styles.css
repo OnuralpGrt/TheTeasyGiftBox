@@ -428,7 +428,8 @@ html {
 .category-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
     transition: transform 0.5s;
     display: block;
     min-height: 100%;
@@ -521,7 +522,8 @@ html {
 .product-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
     transition: transform 0.5s;
     display: block;
     min-height: 100%;
