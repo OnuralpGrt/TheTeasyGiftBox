@@ -369,7 +369,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Öğretmenler Günü Kutusu ürünleri
     const ogretmenlerProducts = [{
-        image: '0.png',
+        image: 'öğretmen.jpg',
         title: 'Öğretmenler Günü Kutusu 1',
         description: 'Öğretmenlerinize duyduğunuz saygı ve sevgiyi en güzel şekilde ifade eden, özenle hazırlanmış özel hediye kutusu. Çiçekler, parfüm, defter ve Türk kahvesi ile dolu özel tasarım kutu.'
     }];
@@ -393,6 +393,13 @@ document.addEventListener('DOMContentLoaded', function() {
         image: 'Dogum.jpg',
         title: 'Doğum Günü Kutusu 1',
         description: 'Sevdiklerinizin özel gününü unutulmaz kılmak için özenle hazırlanmış doğum günü hediye kutusu. Özel tasarım ve kaliteli ürünlerle dolu, sevgi dolu bir hediye.'
+    }];
+    
+    // Sevgililer Günü Kutusu ürünleri
+    const sevgililerProducts = [{
+        image: 'sev.jpg',
+        title: 'Sevgililer Günü Kutusu 1',
+        description: 'Sevgilinize duyduğunuz aşkı ve sevgiyi en romantik şekilde ifade eden, özenle hazırlanmış özel hediye kutusu. Romantik ürünlerle dolu, aşk dolu bir hediye.'
     }];
     
     // Kategori tıklama olayları
@@ -421,6 +428,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 displayYeniisProducts();
             } else if (category === 'dogum') {
                 displayDogumProducts();
+            } else if (category === 'sevgililer') {
+                displaySevgililerProducts();
             }
         });
     });
@@ -551,6 +560,36 @@ document.addEventListener('DOMContentLoaded', function() {
         productsGrid.innerHTML = '';
         
         dogumProducts.forEach((product, index) => {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            productCard.innerHTML = `
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.title}">
+                    <div class="product-overlay">
+                        <button class="btn btn-small">Hızlı Görüntüle</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>${product.title}</h3>
+                    <p class="product-description">${product.description}</p>
+                    <a href="https://www.instagram.com/theteasygiftbox_/?igsh=MWFhczRsdGFwZ3RvcQ%3D%3D" target="_blank" class="btn btn-price">Fiyat Bilgisi Al</a>
+                </div>
+            `;
+            productsGrid.appendChild(productCard);
+        });
+        
+        // Re-initialize animations
+        setTimeout(() => {
+            initScrollAnimations();
+        }, 100);
+    }
+    
+    // Sevgililer Günü ürünlerini göster
+    function displaySevgililerProducts() {
+        productsTitle.textContent = 'Sevgililer Günü Kutusu Ürünleri';
+        productsGrid.innerHTML = '';
+        
+        sevgililerProducts.forEach((product, index) => {
             const productCard = document.createElement('div');
             productCard.className = 'product-card';
             productCard.innerHTML = `
