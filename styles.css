@@ -415,6 +415,10 @@ html {
     transform: translateY(-5px);
 }
 
+.category-card[data-category="dogum"] {
+    margin-left: 2rem;
+}
+
 .category-image {
     position: relative;
     height: 300px;
