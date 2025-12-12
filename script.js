@@ -362,11 +362,19 @@ document.addEventListener('DOMContentLoaded', function() {
     for (let i = 0; i <= 14; i++) {
         const isFirst = i === 0;
         const isSecond = i === 1;
+        const isThird = i === 2;
+        const isFourth = i === 3;
+        const isFifth = i === 4;
+        const isSixth = i === 5;
+        const isSeventh = i === 6;
+        const isEighth = i === 7;
+        const isNinth = i === 8;
+        const isTenth = i === 9;
         yilbasiProducts.push({
-            image: isFirst ? 'yılbası1.jpg' : isSecond ? 'yılbası2.jpg' : `image${i}.jpeg`,
+            image: isFirst ? 'yılbası1.jpg' : isSecond ? 'yılbası2.jpg' : isThird ? 'yılbası3.jpg' : isFourth ? 'yılbası4.jpg' : isFifth ? 'yılbası5.jpg' : isSixth ? 'yılbası6.jpg' : isSeventh ? 'yılbası7.jpg' : isEighth ? 'yılbası8.jpg' : isNinth ? 'yılbası9.jpg' : isTenth ? 'yılbası10.jpg' : `image${i}.jpeg`,
             title: `Yılbaşı Kutusu ${i + 1}`,
             description: 'Yeni yılı kutlamak için özel olarak tasarlanmış, neşe dolu ve eğlenceli ürünlerle hazırlanmış hediye kutusu.',
-            price: isFirst ? 1000 : isSecond ? 1250 : null
+            price: isFirst ? 1000 : isSecond ? 1250 : isThird ? 1000 : isFourth ? 1200 : isFifth ? 1500 : isSixth ? 1500 : isSeventh ? 1750 : isEighth ? 1600 : isNinth ? 1000 : isTenth ? 1200 : null
         });
     }
     
