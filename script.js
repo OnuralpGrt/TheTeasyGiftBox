@@ -422,7 +422,7 @@ document.addEventListener('DOMContentLoaded', function() {
         description: 'Öğretmenlerinize duyduğunuz saygı ve sevgiyi en güzel şekilde ifade eden, özenle hazırlanmış özel hediye kutusu. Çiçekler, parfüm, defter ve Türk kahvesi ile dolu özel tasarım kutu.',
         price: 1500
     }, {
-        image: 'öğretmen2jpeg.jpeg',
+        image: 'ögretmen2.jpeg',
         title: 'Öğretmenler Günü Kutusu 2',
         description: 'Öğretmenlerinize duyduğunuz saygı ve sevgiyi en güzel şekilde ifade eden, özenle hazırlanmış özel hediye kutusu. Çiçekler, parfüm, defter ve Türk kahvesi ile dolu özel tasarım kutu.',
         price: 1500
@@ -430,12 +430,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // İçimden Geldi Kutusu ürünleri
     const icimdenProducts = [{
-        image: 'hem.jpg',
+        image: 'hem.jpeg',
         title: 'İçimden Geldi Kutusu 1',
         description: 'İçinizden geldiği gibi, özel bir anı yakalamak için tasarlanmış özel hediye kutusu. Sevdiklerinize sürpriz yapmak için mükemmel bir seçim.',
         price: 1200
     }, {
-        image: 'hem2.jpg',
+        image: 'hem2.jpeg',
         title: 'İçimden Geldi Kutusu 2',
         description: 'İçinizden geldiği gibi, özel bir anı yakalamak için tasarlanmış özel hediye kutusu. Sevdiklerinize sürpriz yapmak için mükemmel bir seçim.',
         price: 1500
