@@ -542,6 +542,16 @@ html {
     transform: scale(1.1);
 }
 
+/* Öğretmenler Kutusu görselleri için tam sığdırma */
+.product-image-ogretmenler img {
+    object-fit: contain;
+    object-position: center;
+}
+
+.product-card:hover .product-image-ogretmenler img {
+    transform: scale(1);
+}
+
 .product-overlay {
     position: absolute;
     top: 0;

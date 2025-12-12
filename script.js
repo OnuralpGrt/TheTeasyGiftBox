@@ -550,7 +550,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const productCard = document.createElement('div');
             productCard.className = 'product-card';
             productCard.innerHTML = `
-                <div class="product-image">
+                <div class="product-image product-image-ogretmenler">
                     <img src="${product.image}" alt="${product.title}">
                     <div class="product-overlay">
                         <button class="btn btn-small">Hızlı Görüntüle</button>
