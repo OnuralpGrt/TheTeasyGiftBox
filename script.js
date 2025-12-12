@@ -360,10 +360,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Yılbaşı Kutusu ürünleri (image0.jpeg'den image14.jpeg'e kadar - 15 ürün)
     const yilbasiProducts = [];
     for (let i = 0; i <= 14; i++) {
+        const isFirst = i === 0;
+        const isSecond = i === 1;
         yilbasiProducts.push({
-            image: `image${i}.jpeg`,
+            image: isFirst ? 'yılbası1.jpg' : isSecond ? 'yılbası2.jpg' : `image${i}.jpeg`,
             title: `Yılbaşı Kutusu ${i + 1}`,
-            description: 'Yeni yılı kutlamak için özel olarak tasarlanmış, neşe dolu ve eğlenceli ürünlerle hazırlanmış hediye kutusu.'
+            description: 'Yeni yılı kutlamak için özel olarak tasarlanmış, neşe dolu ve eğlenceli ürünlerle hazırlanmış hediye kutusu.',
+            price: isFirst ? 1000 : isSecond ? 1250 : null
         });
     }
     
@@ -452,7 +455,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="product-info">
                     <h3>${product.title}</h3>
                     <p class="product-description">${product.description}</p>
-                    <a href="https://www.instagram.com/theteasygiftbox_/?igsh=MWFhczRsdGFwZ3RvcQ%3D%3D" target="_blank" class="btn btn-price">Fiyat Bilgisi Al</a>
+                    ${product.price ? `<div class="product-price">${product.price} TL</div>` : ''}
+                    <a href="https://www.instagram.com/theteasygiftbox_/?igsh=MWFhczRsdGFwZ3RvcQ%3D%3D" target="_blank" class="btn btn-price">Satın Al</a>
                 </div>
             `;
             productsGrid.appendChild(productCard);
@@ -482,7 +486,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="product-info">
                     <h3>${product.title}</h3>
                     <p class="product-description">${product.description}</p>
-                    <a href="https://www.instagram.com/theteasygiftbox_/?igsh=MWFhczRsdGFwZ3RvcQ%3D%3D" target="_blank" class="btn btn-price">Fiyat Bilgisi Al</a>
+                    <a href="https://www.instagram.com/theteasygiftbox_/?igsh=MWFhczRsdGFwZ3RvcQ%3D%3D" target="_blank" class="btn btn-price">Satın Al</a>
                 </div>
             `;
             productsGrid.appendChild(productCard);
@@ -512,7 +516,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="product-info">
                     <h3>${product.title}</h3>
                     <p class="product-description">${product.description}</p>
-                    <a href="https://www.instagram.com/theteasygiftbox_/?igsh=MWFhczRsdGFwZ3RvcQ%3D%3D" target="_blank" class="btn btn-price">Fiyat Bilgisi Al</a>
+                    <a href="https://www.instagram.com/theteasygiftbox_/?igsh=MWFhczRsdGFwZ3RvcQ%3D%3D" target="_blank" class="btn btn-price">Satın Al</a>
                 </div>
             `;
             productsGrid.appendChild(productCard);
@@ -542,7 +546,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="product-info">
                     <h3>${product.title}</h3>
                     <p class="product-description">${product.description}</p>
-                    <a href="https://www.instagram.com/theteasygiftbox_/?igsh=MWFhczRsdGFwZ3RvcQ%3D%3D" target="_blank" class="btn btn-price">Fiyat Bilgisi Al</a>
+                    <a href="https://www.instagram.com/theteasygiftbox_/?igsh=MWFhczRsdGFwZ3RvcQ%3D%3D" target="_blank" class="btn btn-price">Satın Al</a>
                 </div>
             `;
             productsGrid.appendChild(productCard);
@@ -572,7 +576,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="product-info">
                     <h3>${product.title}</h3>
                     <p class="product-description">${product.description}</p>
-                    <a href="https://www.instagram.com/theteasygiftbox_/?igsh=MWFhczRsdGFwZ3RvcQ%3D%3D" target="_blank" class="btn btn-price">Fiyat Bilgisi Al</a>
+                    <a href="https://www.instagram.com/theteasygiftbox_/?igsh=MWFhczRsdGFwZ3RvcQ%3D%3D" target="_blank" class="btn btn-price">Satın Al</a>
                 </div>
             `;
             productsGrid.appendChild(productCard);
@@ -602,7 +606,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="product-info">
                     <h3>${product.title}</h3>
                     <p class="product-description">${product.description}</p>
-                    <a href="https://www.instagram.com/theteasygiftbox_/?igsh=MWFhczRsdGFwZ3RvcQ%3D%3D" target="_blank" class="btn btn-price">Fiyat Bilgisi Al</a>
+                    <a href="https://www.instagram.com/theteasygiftbox_/?igsh=MWFhczRsdGFwZ3RvcQ%3D%3D" target="_blank" class="btn btn-price">Satın Al</a>
                 </div>
             `;
             productsGrid.appendChild(productCard);
