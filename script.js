@@ -345,7 +345,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         img.addEventListener('load', function() {
             this.style.opacity = '1';
+            this.style.visibility = 'visible';
         });
+        
+        // Görsellerin başlangıçta görünür olmasını sağla
+        img.style.opacity = '1';
+        img.style.visibility = 'visible';
     });
 });
 

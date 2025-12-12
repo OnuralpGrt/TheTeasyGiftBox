@@ -436,6 +436,10 @@ html {
     object-position: center;
     transition: transform 0.5s;
     display: block;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 1;
+    visibility: visible;
 }
 
 .category-image::before {
@@ -1101,6 +1105,13 @@ html {
         height: 250px;
     }
     
+    .category-image img {
+        min-width: 100%;
+        min-height: 100%;
+        opacity: 1;
+        visibility: visible;
+    }
+    
     .product-image {
         height: 300px;
     }
@@ -1309,6 +1320,13 @@ html {
     
     .category-image {
         height: 220px;
+    }
+    
+    .category-image img {
+        min-width: 100%;
+        min-height: 100%;
+        opacity: 1;
+        visibility: visible;
     }
     
     .product-image {
