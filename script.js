@@ -357,9 +357,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (!productsGrid || !productsTitle) return;
     
-    // Yılbaşı Kutusu ürünleri (image0.jpeg'den image14.jpeg'e kadar - 15 ürün)
+    // Yılbaşı Kutusu ürünleri (sadece fiyatı olan ürünler)
     const yilbasiProducts = [];
-    for (let i = 0; i <= 14; i++) {
+    for (let i = 0; i <= 12; i++) {
         const isFirst = i === 0;
         const isSecond = i === 1;
         const isThird = i === 2;
@@ -370,17 +370,20 @@ document.addEventListener('DOMContentLoaded', function() {
         const isEighth = i === 7;
         const isNinth = i === 8;
         const isTenth = i === 9;
+        const isEleventh = i === 10;
+        const isTwelfth = i === 11;
+        const isThirteenth = i === 12;
         yilbasiProducts.push({
-            image: isFirst ? 'yılbası1.jpg' : isSecond ? 'yılbası2.jpg' : isThird ? 'yılbası3.jpg' : isFourth ? 'yılbası4.jpg' : isFifth ? 'yılbası5.jpg' : isSixth ? 'yılbası6.jpg' : isSeventh ? 'yılbası7.jpg' : isEighth ? 'yılbası8.jpg' : isNinth ? 'yılbası9.jpg' : isTenth ? 'yılbası10.jpg' : `image${i}.jpeg`,
+            image: isFirst ? 'yılbası1.jpg' : isSecond ? 'yılbası2.jpg' : isThird ? 'yılbası3.jpg' : isFourth ? 'yılbası4.jpg' : isFifth ? 'yılbası5.jpg' : isSixth ? 'yılbası6.jpg' : isSeventh ? 'yılbası7.jpg' : isEighth ? 'yılbası8.jpg' : isNinth ? 'yılbası9.jpg' : isTenth ? 'yılbası10.jpg' : isEleventh ? 'yılbası11.jpeg' : isTwelfth ? 'yılbası12.jpeg' : isThirteenth ? 'yılbası13.jpeg' : `image${i}.jpeg`,
             title: `Yılbaşı Kutusu ${i + 1}`,
             description: 'Yeni yılı kutlamak için özel olarak tasarlanmış, neşe dolu ve eğlenceli ürünlerle hazırlanmış hediye kutusu.',
-            price: isFirst ? 1000 : isSecond ? 1250 : isThird ? 1000 : isFourth ? 1200 : isFifth ? 1500 : isSixth ? 1500 : isSeventh ? 1750 : isEighth ? 1600 : isNinth ? 1000 : isTenth ? 1200 : null
+            price: isFirst ? 1000 : isSecond ? 1250 : isThird ? 1000 : isFourth ? 1200 : isFifth ? 1500 : isSixth ? 1500 : isSeventh ? 1750 : isEighth ? 1600 : isNinth ? 1000 : isTenth ? 1200 : isEleventh ? 800 : isTwelfth ? 2000 : isThirteenth ? 2000 : null
         });
     }
     
     // Öğretmenler Günü Kutusu ürünleri
     const ogretmenlerProducts = [{
-        image: 'ögretmen.jpg',
+        image: 'ogretmenler.jpg',
         title: 'Öğretmenler Günü Kutusu 1',
         description: 'Öğretmenlerinize duyduğunuz saygı ve sevgiyi en güzel şekilde ifade eden, özenle hazırlanmış özel hediye kutusu. Çiçekler, parfüm, defter ve Türk kahvesi ile dolu özel tasarım kutu.'
     }];
@@ -401,7 +404,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Doğum Günü Kutusu ürünleri
     const dogumProducts = [{
-        image: 'Dogum.jpg',
+        image: 'dogumgun.jpg',
         title: 'Doğum Günü Kutusu 1',
         description: 'Sevdiklerinizin özel gününü unutulmaz kılmak için özenle hazırlanmış doğum günü hediye kutusu. Özel tasarım ve kaliteli ürünlerle dolu, sevgi dolu bir hediye.'
     }];
@@ -411,6 +414,14 @@ document.addEventListener('DOMContentLoaded', function() {
         image: 'sev.jpg',
         title: 'Sevgililer Günü Kutusu 1',
         description: 'Sevgilinize duyduğunuz aşkı ve sevgiyi en romantik şekilde ifade eden, özenle hazırlanmış özel hediye kutusu. Romantik ürünlerle dolu, aşk dolu bir hediye.'
+    }];
+    
+    // Erkeklere Özel Kutusu ürünleri
+    const erkeklereProducts = [{
+        image: 'erkeklere1.jpeg',
+        title: 'Erkeklere Özel Kutusu 1',
+        description: 'Erkeklere özel olarak tasarlanmış, kaliteli ve şık ürünlerle hazırlanmış özel hediye kutusu. Sevdiklerinize özel bir hediye sunmak için mükemmel bir seçim.',
+        price: 1200
     }];
     
     // Kategori tıklama olayları
@@ -441,6 +452,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 displayDogumProducts();
             } else if (category === 'sevgililer') {
                 displaySevgililerProducts();
+            } else if (category === 'erkeklere') {
+                displayErkeklereProducts();
             }
         });
     });
@@ -614,6 +627,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="product-info">
                     <h3>${product.title}</h3>
                     <p class="product-description">${product.description}</p>
+                    <a href="https://www.instagram.com/theteasygiftbox_/?igsh=MWFhczRsdGFwZ3RvcQ%3D%3D" target="_blank" class="btn btn-price">Satın Al</a>
+                </div>
+            `;
+            productsGrid.appendChild(productCard);
+        });
+        
+        // Re-initialize animations
+        setTimeout(() => {
+            initScrollAnimations();
+        }, 100);
+    }
+    
+    // Erkeklere Özel ürünlerini göster
+    function displayErkeklereProducts() {
+        productsTitle.textContent = 'Erkeklere Özel Kutusu Ürünleri';
+        productsGrid.innerHTML = '';
+        
+        erkeklereProducts.forEach((product, index) => {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            productCard.innerHTML = `
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.title}">
+                    <div class="product-overlay">
+                        <button class="btn btn-small">Hızlı Görüntüle</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>${product.title}</h3>
+                    <p class="product-description">${product.description}</p>
+                    ${product.price ? `<div class="product-price">${product.price} TL</div>` : ''}
                     <a href="https://www.instagram.com/theteasygiftbox_/?igsh=MWFhczRsdGFwZ3RvcQ%3D%3D" target="_blank" class="btn btn-price">Satın Al</a>
                 </div>
             `;
