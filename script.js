@@ -383,16 +383,28 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Öğretmenler Günü Kutusu ürünleri
     const ogretmenlerProducts = [{
-        image: 'ogretmenler.jpg',
+        image: 'öğretmen1.jpeg',
         title: 'Öğretmenler Günü Kutusu 1',
-        description: 'Öğretmenlerinize duyduğunuz saygı ve sevgiyi en güzel şekilde ifade eden, özenle hazırlanmış özel hediye kutusu. Çiçekler, parfüm, defter ve Türk kahvesi ile dolu özel tasarım kutu.'
+        description: 'Öğretmenlerinize duyduğunuz saygı ve sevgiyi en güzel şekilde ifade eden, özenle hazırlanmış özel hediye kutusu. Çiçekler, parfüm, defter ve Türk kahvesi ile dolu özel tasarım kutu.',
+        price: 1500
+    }, {
+        image: 'öğretmen2jpeg.jpeg',
+        title: 'Öğretmenler Günü Kutusu 2',
+        description: 'Öğretmenlerinize duyduğunuz saygı ve sevgiyi en güzel şekilde ifade eden, özenle hazırlanmış özel hediye kutusu. Çiçekler, parfüm, defter ve Türk kahvesi ile dolu özel tasarım kutu.',
+        price: 1500
     }];
     
     // İçimden Geldi Kutusu ürünleri
     const icimdenProducts = [{
-        image: 'içimden_geldi.jpg',
+        image: 'hem.jpg',
         title: 'İçimden Geldi Kutusu 1',
-        description: 'İçinizden geldiği gibi, özel bir anı yakalamak için tasarlanmış özel hediye kutusu. Sevdiklerinize sürpriz yapmak için mükemmel bir seçim.'
+        description: 'İçinizden geldiği gibi, özel bir anı yakalamak için tasarlanmış özel hediye kutusu. Sevdiklerinize sürpriz yapmak için mükemmel bir seçim.',
+        price: 1200
+    }, {
+        image: 'hem2.jpg',
+        title: 'İçimden Geldi Kutusu 2',
+        description: 'İçinizden geldiği gibi, özel bir anı yakalamak için tasarlanmış özel hediye kutusu. Sevdiklerinize sürpriz yapmak için mükemmel bir seçim.',
+        price: 1500
     }];
     
     // Yeni İş Kutusu ürünleri
@@ -411,9 +423,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Sevgililer Günü Kutusu ürünleri
     const sevgililerProducts = [{
-        image: 'sev.jpg',
+        image: 'hem.jpg',
         title: 'Sevgililer Günü Kutusu 1',
-        description: 'Sevgilinize duyduğunuz aşkı ve sevgiyi en romantik şekilde ifade eden, özenle hazırlanmış özel hediye kutusu. Romantik ürünlerle dolu, aşk dolu bir hediye.'
+        description: 'Sevgilinize duyduğunuz aşkı ve sevgiyi en romantik şekilde ifade eden, özenle hazırlanmış özel hediye kutusu. Romantik ürünlerle dolu, aşk dolu bir hediye.',
+        price: 1200
+    }, {
+        image: 'hem2.jpg',
+        title: 'Sevgililer Günü Kutusu 2',
+        description: 'Sevgilinize duyduğunuz aşkı ve sevgiyi en romantik şekilde ifade eden, özenle hazırlanmış özel hediye kutusu. Romantik ürünlerle dolu, aşk dolu bir hediye.',
+        price: 1500
     }];
     
     // Erkeklere Özel Kutusu ürünleri
@@ -507,6 +525,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="product-info">
                     <h3>${product.title}</h3>
                     <p class="product-description">${product.description}</p>
+                    ${product.price ? `<div class="product-price">${product.price} TL</div>` : ''}
                     <a href="https://www.instagram.com/theteasygiftbox_/?igsh=MWFhczRsdGFwZ3RvcQ%3D%3D" target="_blank" class="btn btn-price">Satın Al</a>
                 </div>
             `;
@@ -537,6 +556,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="product-info">
                     <h3>${product.title}</h3>
                     <p class="product-description">${product.description}</p>
+                    ${product.price ? `<div class="product-price">${product.price} TL</div>` : ''}
                     <a href="https://www.instagram.com/theteasygiftbox_/?igsh=MWFhczRsdGFwZ3RvcQ%3D%3D" target="_blank" class="btn btn-price">Satın Al</a>
                 </div>
             `;
@@ -627,6 +647,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="product-info">
                     <h3>${product.title}</h3>
                     <p class="product-description">${product.description}</p>
+                    ${product.price ? `<div class="product-price">${product.price} TL</div>` : ''}
                     <a href="https://www.instagram.com/theteasygiftbox_/?igsh=MWFhczRsdGFwZ3RvcQ%3D%3D" target="_blank" class="btn btn-price">Satın Al</a>
                 </div>
             `;
