@@ -334,23 +334,52 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Image Error Handler
+// Image Error Handler with fallback
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('img').forEach(img => {
+        const originalSrc = img.src;
+        
         img.addEventListener('error', function() {
             console.warn('Resim yüklenemedi:', this.src);
-            // Fallback placeholder eklenebilir
-            this.style.display = 'none';
+            
+            // Alternatif uzantıları dene
+            const srcWithoutExt = originalSrc.replace(/\.(jpg|jpeg|png|gif)$/i, '');
+            const extensions = ['.jpg', '.jpeg', '.png', '.JPG', '.JPEG', '.PNG'];
+            
+            let triedExtensions = 0;
+            const tryNextExtension = () => {
+                if (triedExtensions < extensions.length) {
+                    const newSrc = srcWithoutExt + extensions[triedExtensions];
+                    triedExtensions++;
+                    const testImg = new Image();
+                    testImg.onload = () => {
+                        img.src = newSrc;
+                        img.style.display = 'block';
+                        img.style.opacity = '1';
+                        img.style.visibility = 'visible';
+                    };
+                    testImg.onerror = tryNextExtension;
+                    testImg.src = newSrc;
+                } else {
+                    // Tüm uzantılar denendi, görseli gizleme
+                    this.style.opacity = '0.5';
+                    this.style.visibility = 'visible';
+                }
+            };
+            
+            tryNextExtension();
         });
         
         img.addEventListener('load', function() {
             this.style.opacity = '1';
             this.style.visibility = 'visible';
+            this.style.display = 'block';
         });
         
         // Görsellerin başlangıçta görünür olmasını sağla
         img.style.opacity = '1';
         img.style.visibility = 'visible';
+        img.style.display = 'block';
     });
 });
 
