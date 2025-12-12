@@ -450,9 +450,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Doğum Günü Kutusu ürünleri
     const dogumProducts = [{
-        image: 'dogumgun.jpg',
+        image: 'hem.jpeg',
         title: 'Doğum Günü Kutusu 1',
-        description: 'Sevdiklerinizin özel gününü unutulmaz kılmak için özenle hazırlanmış doğum günü hediye kutusu. Özel tasarım ve kaliteli ürünlerle dolu, sevgi dolu bir hediye.'
+        description: 'Sevdiklerinizin özel gününü unutulmaz kılmak için özenle hazırlanmış doğum günü hediye kutusu. Özel tasarım ve kaliteli ürünlerle dolu, sevgi dolu bir hediye.',
+        price: 1200
+    }, {
+        image: 'hem2.jpeg',
+        title: 'Doğum Günü Kutusu 2',
+        description: 'Sevdiklerinizin özel gününü unutulmaz kılmak için özenle hazırlanmış doğum günü hediye kutusu. Özel tasarım ve kaliteli ürünlerle dolu, sevgi dolu bir hediye.',
+        price: 1500
     }];
     
     // Sevgililer Günü Kutusu ürünleri
@@ -651,6 +657,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="product-info">
                     <h3>${product.title}</h3>
                     <p class="product-description">${product.description}</p>
+                    ${product.price ? `<div class="product-price">${product.price} TL</div>` : ''}
                     <a href="https://www.instagram.com/theteasygiftbox_/?igsh=MWFhczRsdGFwZ3RvcQ%3D%3D" target="_blank" class="btn btn-price">Satın Al</a>
                 </div>
             `;
